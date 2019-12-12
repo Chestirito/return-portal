@@ -21,6 +21,7 @@ class confirmOrder extends React.Component {
       hiddenStyle: " l3Hidden",
       existingStyleText: "l3On",
       newStyleText: "l3Off",
+      newEmail: "",
       emailCopy: "",
       showEmailConfirmInfo: false
     };
@@ -31,9 +32,10 @@ class confirmOrder extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.updateEmailCopy = this.updateEmailCopy.bind(this);
     this.showEmailConfirmInfo = this.showEmailConfirmInfo.bind(this);
+    this.updateEmailChange = this.updateEmailChange.bind(this);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     //on mount, see if it is an email address (or phone number) by checking for index of @
     if (this.props.email.indexOf("@") == -1) {
       this.setState({ selectedEmail: 1, emailToPrint: "" });
@@ -74,6 +76,10 @@ class confirmOrder extends React.Component {
     this.setState({ emailCopy: e.target.value });
   }
 
+  updateEmailChange(e){
+    this.setState({ newEmail: e.target.value });
+    this.props.updatehandleChange("newEmail")
+  }
   //click question mark to show explain for email confirmation
   showEmailConfirmInfo(e) {
     this.setState({
@@ -114,16 +120,19 @@ class confirmOrder extends React.Component {
       if (this.state.selectedEmail == 1) {
         //make sure the email entered is valid if they are entering new one
         if (
-          this.props.newEmail.length < 6 ||
-          this.props.newEmail.indexOf(" ") != -1 ||
-          this.props.newEmail.indexOf("@") == -1
+          this.state.newEmail.length < 6 ||
+          this.state.newEmail.indexOf(" ") != -1 ||
+          this.state.newEmail.indexOf("@") == -1
         ) {
           this.setState({
             errorMessage: "*Please enter a valid email to continue*"
           });
         } else {
           //change state in IdentifyApp to render new page
-          if (this.props.newEmail == this.state.emailCopy) {
+          if (this.state.newEmail == this.state.emailCopy) {
+            this.setState({
+              errorMessage: ""
+            });
             this.props.updateEmail();
             this.props.updateforward();
           } else {
@@ -144,7 +153,7 @@ class confirmOrder extends React.Component {
   }
 
   //flip the radio select if they start typing in their own email
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     if (this.props.newEmail != "") {
       this.set1();
     }
@@ -206,9 +215,12 @@ class confirmOrder extends React.Component {
                   <input
                     className={this.state.newStyleText}
                     type="text"
-                    value={this.props.newEmail}
+                    placeholder="Email"
+                    // value={this.props.newEmail}
+                    value={this.state.newEmail}
                     onClick={this.set1}
-                    onChange={this.props.updatehandleChange("newEmail")}
+                    // onChange={this.props.updatehandleChange("newEmail")}
+                    onChange={this.updateEmailChange}
                   />
                 </label>
                 <br />
@@ -217,6 +229,7 @@ class confirmOrder extends React.Component {
                   <input
                     className="l3On"
                     type="text"
+                    placeholder="Re-Enter Email"
                     value={this.state.emailCopy}
                     onClick={this.set1}
                     onChange={this.updateEmailCopy}

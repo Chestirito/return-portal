@@ -84,8 +84,8 @@ class Search extends Component {
                 placeholder="Order Number"
                 onChange={this.handleOrderNumChange}
               />
-              <span onClick={this.showOrderNumberInfo}>
-                <img src="https://drive.google.com/uc?id=1muURA-zh3cbC2WLT0gX8nLRYLPilQujh" />
+              <span title="Show order info" onClick={this.showOrderNumberInfo}>
+                <img alt="help order" src="https://drive.google.com/uc?id=1muURA-zh3cbC2WLT0gX8nLRYLPilQujh" />
               </span>
               {this.state.showOrderNumberInfo ? (
                 <p>Your order number can be found in your confirmation email</p>
@@ -100,8 +100,8 @@ class Search extends Component {
                 placeholder="Email or Phone Number"
                 onChange={this.handleEmailChange}
               />
-              <span onClick={this.showEmailInfo}>
-                <img src="https://drive.google.com/uc?id=1muURA-zh3cbC2WLT0gX8nLRYLPilQujh" />
+              <span title="Show email info" onClick={this.showEmailInfo}>
+                <img alt="help email" src="https://drive.google.com/uc?id=1muURA-zh3cbC2WLT0gX8nLRYLPilQujh" />
               </span>
               {this.state.showEmailInfo ? (
                 <p>

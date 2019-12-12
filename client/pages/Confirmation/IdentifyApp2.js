@@ -585,7 +585,7 @@ class IdentifyApp extends Component {
             items={this.returnItemList}
             email={this.state.email}
             selectedEmail={this.state.selectedEmail}
-            newEmail={this.state.newEmail}
+            // newEmail={this.state.newEmail}
             orderNum={this.state.orderNum}
             updateforward={this.forward.bind(this)}
             updateEmail={this.setEmail.bind(this)}

@@ -6,7 +6,7 @@ import Item from "./Item2";
 Allow customer to look over one more time before submit
 */
 
-class finalPage extends React.Component {
+class FinalPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -50,4 +50,4 @@ class finalPage extends React.Component {
   }
 }
 
-export default finalPage;
+export default FinalPage;

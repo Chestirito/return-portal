@@ -7,6 +7,7 @@ class universalNavBar extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     if (this.props.show) {
       //if we're on a middle step, show progressbar

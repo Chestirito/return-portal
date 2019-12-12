@@ -185,6 +185,7 @@ class Item extends Component {
               <label>Quantity for Return: </label>
               <Select
                 className="qty dropDown"
+                classNamePrefix="qty"
                 isSearchable={false}
                 placeholder={"0"}
                 value={this.state.activeQuantity}
@@ -216,6 +217,7 @@ class Item extends Component {
               Reason for return:
               <Select
                 className="reasonSelect"
+                classNamePrefix="reasonSelect"
                 isSearchable={false}
                 placeholder={"Reason"}
                 value={this.state.activeReason}
