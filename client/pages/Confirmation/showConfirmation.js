@@ -83,7 +83,8 @@ class finalPage extends React.Component {
           <div className="dropLocations">
             {/* Below is dynamic google maps component*/}
             <div className="mapContainer">
-              <MapContainer />
+              {/*COMMENTED OUT MAPCONTAINER FOR UNSAFE-LIFECYCLE WARNING*/}
+              {/* <MapContainer /> */}
             </div>
             <div className="dropAdd">
               <p className="dropAddress">1. 123 Dundas Street (Starbucks)</p>
